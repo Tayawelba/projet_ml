@@ -23,24 +23,23 @@ jobs:
       run: |
         pip install -r requirements.txt
         pip install --upgrade pip
+        pip install transformers huggingface_hub
 
     - name: Train Model
       run: |
         python script/train_evaluate_model.py
-      continue-on-error: true
     - name: Test Model
       run: |
         python script/test_evaluate_model.py
-      continue-on-error: true
     - name: Val Model
       run: |
         python script/val_evaluate_model.py
-      continue-on-error: true   
     - name: Upload Model to Hugging Face
       env:
         HF_TOKEN: ${{ secrets.HF_TOKEN }}
       run: |
-          python script/upload_to_hf.py
+        python script/upload_to_hf.py
+      continue-on-error: true
     - name: Send Email
       env:
         EMAIL_USER: ${{ secrets.EMAIL_USER }}

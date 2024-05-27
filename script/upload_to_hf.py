@@ -1,5 +1,5 @@
 import os
-from huggingface_hub import HfApi, HfFolder, Repository
+from huggingface_hub import HfApi, upload_folder
 
 def upload_model_to_hf():
     # Récupérer le token d'authentification de Hugging Face
@@ -8,17 +8,17 @@ def upload_model_to_hf():
     repo_name = "tayawelba/examen_github"
 
     # Authentifier
-    HfFolder.save_token(hf_token)
     api = HfApi()
-    api.create_repo(repo_name, exist_ok=True)
+    api.create_repo(repo_name, exist_ok=True, token=hf_token)
 
-    # Créer le dépôt localement
-    repo = Repository(local_dir=model_path, clone_from=repo_name)
-
-    # Ajouter tous les fichiers et les téléverser
-    repo.git_add(auto_lfs_track=True)
-    repo.git_commit("Upload trained model")
-    repo.git_push()
+    # Upload du modèle en utilisant l'API HTTP
+    upload_folder(
+        folder_path=model_path,
+        path_in_repo=".",
+        repo_id=repo_name,
+        token=hf_token,
+        commit_message="Upload trained model"
+    )
 
 if __name__ == '__main__':
     upload_model_to_hf()
