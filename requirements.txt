@@ -6,5 +6,4 @@ pillow
 tensorflow
 scikit-learn
 jupyter
-pydocs
 opencv-python
