@@ -13,7 +13,7 @@ def send_email():
     msg = MIMEMultipart()
     msg['From'] = user
     msg['To'] = ', '.join(recipients)
-    msg['Subject'] = 'Modèle Entraîné et Documentation'
+    msg['Subject'] = 'Modèle Entraîné'
 
     body = 'Veuillez trouver ci-joint le modèle entraîné et la documentation générée.'
     msg.attach(MIMEText(body, 'plain'))
