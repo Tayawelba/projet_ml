@@ -1,10 +1,9 @@
-name: CI/CD Pipeline
-
+name: Exécuter les scripts et envoyer un email
 
 on:
   schedule:
     - cron: '5 * * * *'
-  workflows:
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
