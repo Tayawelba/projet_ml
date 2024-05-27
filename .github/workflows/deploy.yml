@@ -26,15 +26,15 @@ jobs:
 
     - name: Train Model
       run: |
-        python script/train_evalute_model.py
+        python script/train_evaluate_model.py
       continue-on-error: true
     - name: Test Model
       run: |
-        python script/test_evalute_model.py
+        python script/test_evaluate_model.py
       continue-on-error: true
     - name: Val Model
       run: |
-        python script/val_evalute_model.py
+        python script/val_evaluate_model.py
       continue-on-error: true    
     
     - name: Send Email
