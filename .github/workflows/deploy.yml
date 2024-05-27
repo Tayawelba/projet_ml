@@ -26,6 +26,9 @@ jobs:
     - name: Train Model
       run: |
         python script/train_evalute_model.py
+      env:
+        pythonLocation: /opt/hostedtoolcache/Python/3.8.18/x64
+        LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.8.18/x64/lib
     - name: Test Model
       run: |
         python script/test_evalute_model.py
