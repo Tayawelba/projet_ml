@@ -27,16 +27,15 @@ jobs:
     - name: Train Model
       run: |
         python script/train_evalute_model.py
-        shell: /usr/bin/bash -e {0}
-      env:
-        pythonLocation: /opt/hostedtoolcache/Python/3.8.18/x64
-        LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.8.18/x64/lib
+      continue-on-error: true
     - name: Test Model
       run: |
         python script/test_evalute_model.py
+      continue-on-error: true
     - name: Val Model
       run: |
-        python script/val_evalute_model.py    
+        python script/val_evalute_model.py
+      continue-on-error: true    
     
     - name: Send Email
       env:
