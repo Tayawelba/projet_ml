@@ -1,6 +1,5 @@
 doc/
 keys/
-data/
 *.pem
 __pycache__/
 *.pyc

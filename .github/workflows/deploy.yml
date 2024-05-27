@@ -1,9 +1,10 @@
 name: CI/CD Pipeline
 
+
 on:
-  push:
-    branches:
-      - main
+  schedule:
+    - cron: '5 * * * *'
+  workflows:
 
 jobs:
   build-and-deploy:
@@ -11,27 +12,22 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v3
       with:
         python-version: 3.8
 
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
-        pip install tensorflow seaborn pydoc
 
-    - name: Train and Validate Model
+    - name: Train, test and Val Model
       run: |
-        python script/train_model.py
-        python script/validate_model.py
-
-    - name: Generate Documentation
-      run: |
-        pydoc -w script
-      continue-on-error: true
+        python script/train_evalute_model.py
+        python script/test_evalute_model.py
+        python script/val_evalute_model.py
 
     - name: Deploy Model
       run: |
