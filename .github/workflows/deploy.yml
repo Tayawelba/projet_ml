@@ -35,8 +35,12 @@ jobs:
     - name: Val Model
       run: |
         python script/val_evaluate_model.py
-      continue-on-error: true    
-    
+      continue-on-error: true   
+    - name: Upload Model to Hugging Face
+      env:
+        HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      run: |
+          python script/upload_to_hf.py
     - name: Send Email
       env:
         EMAIL_USER: ${{ secrets.EMAIL_USER }}
