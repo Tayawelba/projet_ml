@@ -12,7 +12,7 @@ IMAGE_SIZE = (229, 229)  # Exemple pour des images, ajustez selon vos besoins
 BATCH_SIZE = 32
 
 # Hyperparamètres pour l'entraînement du modèle
-EPOCHS = 15
+EPOCHS = 5
 LEARNING_RATE = 0.001
 
 # Chemin pour sauvegarder le modèle
