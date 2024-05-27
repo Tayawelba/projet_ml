@@ -23,16 +23,16 @@ jobs:
         pip install -r requirements.txt
         pip install --upgrade pip
 
-    - name: Train, test and Val Model
+    - name: Train Model
       run: |
         python script/train_evalute_model.py
-        python script/test_evalute_model.py
-        python script/val_evalute_model.py
-
-    - name: Deploy Model
+    - name: Test Model
       run: |
-        python script/deploy_model.py
-
+        python script/test_evalute_model.py
+    - name: Val Model
+      run: |
+        python script/val_evalute_model.py    
+    
     - name: Send Email
       env:
         EMAIL_USER: ${{ secrets.EMAIL_USER }}
